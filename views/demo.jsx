@@ -22,12 +22,12 @@ export class Demo extends Component {
   constructor(props) {
     super();
     this.state = {
-      model: 'en-US_BroadbandModel',
+      model: 'pt-BR_BroadbandModel',
       rawMessages: [],
       formattedMessages: [],
       audioSource: null,
       speakerLabels: true,
-      keywords: this.getKeywords('en-US_BroadbandModel'),
+      keywords: this.getKeywords('pt-BR_BroadbandModel'),
       // transcript model and keywords are the state that they were when the button was clicked.
       // Changing them during a transcription would cause a mismatch between the setting sent to the
       // service and what is displayed on the demo, and could cause bugs.
@@ -175,7 +175,7 @@ export class Demo extends Component {
   }
 
   handleUserFileRejection() {
-    this.setState({ error: 'Sorry, that file does not appear to be compatible.' });
+    this.setState({ error: 'Desculpe, esse arquivo não parece ser compatível.' });
   }
 
   handleSample1Click() {
@@ -298,7 +298,7 @@ export class Demo extends Component {
   fetchToken() {
     return fetch('/api/credentials').then((res) => {
       if (res.status !== 200) {
-        throw new Error('Error retrieving auth token');
+        throw new Error('Erro ao recuperar o token de autenticação');
       }
       return res.json();
     }) // todo: throw here if non-200 status
@@ -328,7 +328,7 @@ export class Demo extends Component {
 
     // clear the speaker_lables is not supported error - e.g.
     // speaker_labels is not a supported feature for model en-US_BroadbandModel
-    if (this.state.error && this.state.error.indexOf('speaker_labels is not a supported feature for model') === 0) {
+    if (this.state.error && this.state.error.indexOf('speaker_labels não é um recurso suportado pelo modelo') === 0) {
       this.setState({ error: null });
     }
   }
@@ -389,14 +389,14 @@ export class Demo extends Component {
   handleError(err, extra) {
     console.error(err, extra);
     if (err.name === 'UNRECOGNIZED_FORMAT') {
-      err = 'Unable to determine content type from file name or header; mp3, wav, flac, ogg, opus, and webm are supported. Please choose a different file.';
+      err = 'Não é possível determinar o tipo de conteúdo do nome do arquivo ou cabeçalho; mp3, wav, flac, ogg, opus e webm são suportados. Por favor, escolha um arquivo diferente.';
     } else if (err.name === 'NotSupportedError' && this.state.audioSource === 'mic') {
-      err = 'This browser does not support microphone input.';
+      err = 'Este navegador não suporta entrada de microfone.';
     } else if (err.message === '(\'UpsamplingNotAllowed\', 8000, 16000)') {
-      err = 'Please select a narrowband voice model to transcribe 8KHz audio files.';
+      err = 'Por favor, selecione um modelo de voz de banda estreita para transcrever arquivos de áudio de 8kHz.';
     } else if (err.message === 'Invalid constraint') {
       // iPod Touch does this on iOS 11 - there is a microphone, but Safari claims there isn't
-      err = 'Unable to access microphone';
+      err = 'Não é possível acessar o microfone';
     }
     this.setState({ error: err.message || err });
   }
@@ -433,8 +433,8 @@ export class Demo extends Component {
 
     const messages = this.getFinalAndLatestInterimResult();
     const micBullet = (typeof window !== 'undefined' && recognizeMicrophone.isSupported)
-      ? <li className="base--li">Use your microphone to record audio. For best results, use broadband models for microphone input.</li>
-      : <li className="base--li base--p_light">Use your microphone to record audio. (Not supported in current browser)</li>;// eslint-disable-line
+      ? <li className="base--li">Use seu microfone para gravar áudio. Para melhores resultados, use modelos de banda larga para entrada de microfone.</li>
+      : <li className="base--li base--p_light">Use seu microfone para gravar áudio. (Não suportado no navegador atual)</li>;// eslint-disable-line
 
     return (
       <Dropzone
@@ -453,24 +453,24 @@ export class Demo extends Component {
 
         <div className="drop-info-container">
           <div className="drop-info">
-            <h1>Drop an audio file here.</h1>
-            <p>Watson Speech to Text supports .mp3, .mpeg, .wav, .opus, and
-              .flac files up to 200mb.
+            <h1>Solte/Insira um arquivo de áudio aqui.</h1>
+            <p>A Fala para Texto do Watson suporta .mp3, .mpeg, .wav, .opus e
+               arquivos .flac até 200mb.
             </p>
           </div>
         </div>
 
-        <h2 className="base--h2">Transcribe Audio</h2>
+        <h2 className="base--h2">Transcrever áudio</h2>
 
         <ul className="base--ul">
           {micBullet}
-          <li className="base--li">Upload pre-recorded audio (.mp3, .mpeg, .wav, .flac, or .opus only).</li>
-          <li className="base--li">Play one of the sample audio files.*</li>
+          <li className="base--li">Faça o upload de áudio pré-gravado (.mp3, .mpeg, .wav, .flac ou .opus apenas).</li>
+          <li className="base--li">Reproduza um dos arquivos de áudio de amostra.*</li>
         </ul>
 
         <div className="smalltext">
-          *Both US English broadband sample audio files are covered under the
-          Creative Commons license.
+          *Ambos os arquivos de áudio de amostra de banda larga em inglês dos EUA estão cobertos pela
+           licença Creative Commons.
         </div>
 
         <div style={{
@@ -478,15 +478,15 @@ export class Demo extends Component {
           paddingBottom: '2em',
         }}
         >
-          The returned result includes the recognized text, {' '}
-          <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#word_alternatives">word alternatives</a>, {' '}
-          and <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#keyword_spotting">spotted keywords</a>. {' '}
-          Some models can <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#speaker_labels">detect multiple speakers</a>; this may slow down performance.
+          O resultado retornado inclui o texto reconhecido, {' '}
+          <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#word_alternatives">alternativas de palavras</a>, {' '}
+          and <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#keyword_spotting">palavras-chaves spotted</a>. {' '}
+          Alguns modelos podem <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#speaker_labels">detectar vários alto-falantes</a>; isso pode diminuir o desempenho.
         </div>
         <div className="flex setup">
           <div className="column">
 
-            <p>Voice Model:
+            <p>Modelo de Voz:
               <ModelDropdown
                 model={model}
                 token={token || accessToken}
@@ -504,19 +504,19 @@ export class Demo extends Component {
                 id="speaker-labels"
               />
               <label className="base--inline-label" htmlFor="speaker-labels">
-                Detect multiple speakers {this.supportsSpeakerLabels() ? '' : ' (Not supported on current model)'}
+                Detectar vários alto-falantes {this.supportsSpeakerLabels() ? '' : ' (Não suportado no modelo atual)'}
               </label>
             </p>
 
           </div>
           <div className="column">
 
-            <p>Keywords to spot: <input
+            <p>Palavras-chaves para spot: <input
               value={this.getKeywordsArrUnique().join()}
               onChange={this.handleKeywordsChange}
               type="text"
               id="keywords"
-              placeholder="Type comma separated keywords here (optional)"
+              placeholder="Digite palavras-chave separadas por vírgula aqui (opcional)"
               className="base--input"
             />
             </p>
@@ -528,19 +528,19 @@ export class Demo extends Component {
         <div className="flex buttons">
 
           <button type="button" className={micButtonClass} onClick={this.handleMicClick}>
-            <Icon type={audioSource === 'mic' ? 'stop' : 'microphone'} fill={micIconFill} /> Record Audio
+            <Icon type={audioSource === 'mic' ? 'parar' : 'microfone'} fill={micIconFill} /> Gravar audio
           </button>
 
           <button type="button" className={buttonClass} onClick={this.handleUploadClick}>
-            <Icon type={audioSource === 'upload' ? 'stop' : 'upload'} /> Upload Audio File
+            <Icon type={audioSource === 'upload' ? 'parar' : 'upload'} /> Carregar arquivo de áudio
           </button>
 
           <button type="button" className={buttonClass} onClick={this.handleSample1Click}>
-            <Icon type={audioSource === 'sample-1' ? 'stop' : 'play'} /> Play Sample 1
+            <Icon type={audioSource === 'sample-1' ? 'parar' : 'play'} /> Tocar Exemplo 1
           </button>
 
           <button type="button" className={buttonClass} onClick={this.handleSample2Click}>
-            <Icon type={audioSource === 'sample-2' ? 'stop' : 'play'} /> Play Sample 2
+            <Icon type={audioSource === 'sample-2' ? 'parar' : 'play'} /> Tocar Exemplo 2
           </button>
 
         </div>
@@ -548,15 +548,15 @@ export class Demo extends Component {
         {err}
 
         <Tabs selected={0}>
-          <Pane label="Text">
+          <Pane label="Texto">
             {settingsAtStreamStart.speakerLabels
               ? <SpeakersView messages={messages} />
               : <Transcript messages={messages} />}
           </Pane>
-          <Pane label="Word Timings and Alternatives">
+          <Pane label="Tempos das palavras e alternativas">
             <TimingView messages={messages} />
           </Pane>
-          <Pane label={`Keywords ${getKeywordsSummary(settingsAtStreamStart.keywords, messages)}`}>
+          <Pane label={`Palavras-chaves ${getKeywordsSummary(settingsAtStreamStart.keywords, messages)}`}>
             <Keywords
               messages={messages}
               keywords={settingsAtStreamStart.keywords}
