@@ -31,7 +31,7 @@ export class ModelDropdown extends Component {
 
   fetchModels(token) {
     SpeechToText.getModels({ token }).then(models => this.setState({ models }))
-      .catch(err => console.log('error loading models', err));
+      .catch(err => console.log('erro carregando os modelos', err));
   }
 
   handleChange(e) {
