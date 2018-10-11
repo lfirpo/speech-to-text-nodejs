@@ -23,11 +23,11 @@ function getSpotted(messages) {
 export function Keywords(props) {
   const { isInProgress, messages, keywords } = props;
   const notSpotted = isInProgress
-    ? 'Not yet spotted.'
-    : 'Not spotted.';
+    ? 'Ainda não spotted.'
+    : 'Não spotted.';
   const notSpottedIcon = isInProgress
-    ? 'loader'
-    : 'close';
+    ? 'carregar'
+    : 'fechar';
   const spotted = getSpotted(messages);
   const list = keywords.map((k) => {
     const spottings = spotted[k];
