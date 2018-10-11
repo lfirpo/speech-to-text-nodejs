@@ -1,5 +1,5 @@
 <h1 align="center" style="border-bottom: none;">🎤 Desmonstração de Fala para Texto </h1>
-<h3 align="center">Aplicativos de demonstração do Node.js que apresentam alguns dos recursos do serviço Speech to Text do IBM Watson.</h3>
+<h3 align="center">Aplicativo de demonstração em Node.js que apresenta alguns recursos do serviço Speech to Text do IBM Watson.</h3>
 <p align="center">
   <a href="http://travis-ci.org/watson-developer-cloud/speech-to-text-nodejs">
     <img alt="Travis" src="https://travis-ci.org/watson-developer-cloud/speech-to-text-nodejs.svg?branch=master">
