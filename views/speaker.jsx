@@ -15,7 +15,7 @@ export default function SpeakersView(props) {
         <div key={`result-${msg.result_index + i}`}>
           <dt>{typeof result.speaker === 'number'
             ? `Speaker ${result.speaker}: `
-            : '(Detecting speakers): '}</dt>
+            : '(Detecção de alto-falantes): '}</dt>
           <dd>{result.alternatives[0].transcript}</dd>
         </div>
       ))).reduce((a, b) => a.concat(b), []); // the reduce() call flattens the array
