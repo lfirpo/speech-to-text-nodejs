@@ -16,7 +16,7 @@ import JSONView from './json-view.jsx';
 import samples from '../src/data/samples.json';
 import cachedModels from '../src/data/models.json';
 
-const ERR_MIC_NARROWBAND = 'Microphone transcription cannot accommodate narrowband voice models, please select a broadband one.';
+const ERR_MIC_NARROWBAND = 'A transcrição do microfone não pode acomodar modelos de voz de banda pequena, selecione um de banda larga.';
 
 export class Demo extends Component {
   constructor(props) {
