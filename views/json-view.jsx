@@ -39,16 +39,16 @@ function renderRawMessage(msg, i) {
   return (
     <div key={`raw-${i}`}>
       {msg.sent === true
-        ? 'Sent: '
+        ? 'Enviado: '
         : ' '}
       {msg.sent === false
-        ? 'Received: '
+        ? 'Recebido: '
         : ''}
       {msg.sent && msg.binary
-        ? 'Audio data (ongoing...)'
+        ? 'Dados de áudio (em curso ...)'
         : ''}
       {msg.close
-        ? `Connection closed: ${msg.code} ${msg.message || ''}`
+        ? `Conexão fechada: ${msg.code} ${msg.message || ''}`
         : ''}
       {makeJsonLink(msg.json, i)}
     </div>
@@ -93,7 +93,7 @@ export class JsonView extends Component {
       return (
         <div className="jsonview">
           <div className="options">
-            Show: &nbsp;
+            Mostrar: &nbsp;
             <RadioGroup
               tabStyle
               name="input-name"
@@ -102,8 +102,8 @@ export class JsonView extends Component {
                 : FORMATTED}
               onChange={this.handleShowChange}
             >
-              <Radio value={RAW}>WebSocket traffic</Radio>
-              <Radio value={FORMATTED}>Formatted results from the SDK</Radio>
+              <Radio value={RAW}>Tráfego WebSocket</Radio>
+              <Radio value={FORMATTED}>Resultados formatados do SDK</Radio>
             </RadioGroup>
             <input
               className="base--checkbox"
@@ -113,7 +113,7 @@ export class JsonView extends Component {
               id="interim"
             />
             <label className="base--inline-label" htmlFor="interim">
-              Hide interim results
+              Ocultar resultados provisórios
             </label>
           </div>
           <hr className="base--hr" />
