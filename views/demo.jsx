@@ -528,19 +528,19 @@ export class Demo extends Component {
         <div className="flex buttons">
 
           <button type="button" className={micButtonClass} onClick={this.handleMicClick}>
-            <Icon type={audioSource === 'mic' ? 'parar' : 'microfone'} fill={micIconFill} /> Gravar audio
+            <Icon type={audioSource === 'mic' ? 'stop' : 'microphone'} fill={micIconFill} /> Gravar audio
           </button>
 
           <button type="button" className={buttonClass} onClick={this.handleUploadClick}>
-            <Icon type={audioSource === 'upload' ? 'parar' : 'upload'} /> Carregar arquivo de áudio
+            <Icon type={audioSource === 'upload' ? 'stop' : 'upload'} /> Carregar arquivo de áudio
           </button>
 
           <button type="button" className={buttonClass} onClick={this.handleSample1Click}>
-            <Icon type={audioSource === 'sample-1' ? 'parar' : 'play'} /> Tocar Exemplo 1
+            <Icon type={audioSource === 'sample-1' ? 'stop' : 'play'} /> Tocar Exemplo 1
           </button>
 
           <button type="button" className={buttonClass} onClick={this.handleSample2Click}>
-            <Icon type={audioSource === 'sample-2' ? 'parar' : 'play'} /> Tocar Exemplo 2
+            <Icon type={audioSource === 'sample-2' ? 'stop' : 'play'} /> Tocar Exemplo 2
           </button>
 
         </div>
