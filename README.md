@@ -12,7 +12,7 @@
 
 O serviço [Speech to Text][service_url] utiliza os recursos de reconhecimento de fala da IBM para converter a fala de vários idiomas em texto. A transcrição de áudio de entrada é continuamente enviada de volta ao cliente com um mínimo de atraso, e é corrigida à medida que mais fala é ouvida. O serviço é acessado através de uma interface WebSocket; uma interface HTTP REST também está disponível;
 
-Você pode ver uma [demonstração] [demo_url] deste aplicativo.
+Você pode ver uma [demonstração][demo_url] deste aplicativo.
 
 ## Pré-requisitos
 
@@ -76,9 +76,9 @@ Você pode ver uma [demonstração] [demo_url] deste aplicativo.
 
 1. Visualize a aplicação em um navegador no endereço `localhost:3000`
 
-## Vamos implantar no IBM Cloud como um aplicativo Cloud Foundry
+## Vamos implantar esta aplicação no IBM Cloud como um aplicativo Cloud Foundry
 
-1. Faça o login no IBM Cloud com o [IBM Cloud CLI](https://console.bluemix.net/docs/cli/index.html#overview)
+1. Faça o login no IBM Cloud com o [IBM Cloud CLI](https://console.bluemix.net/docs/cli/index.html#overview), escolhendo a localização da API registrada anteriormente. No caso do Sul dos Estados Unidos deve utilizar a opção 4 (us-south), que corresponde aos exemplos apresentados até aqui.
 
     ```
     ibmcloud login
@@ -90,26 +90,27 @@ Você pode ver uma [demonstração] [demo_url] deste aplicativo.
     ibmcloud target --cf
     ```
 
-1. Edit the *manifest.yml* file. Change the **name** field to something unique. For example, `- name: my-app-name`.
+1. Edite o arquivo *manifest.yml* . Altere os seguintes campos: 
+   - **name** para algo único. Por exemplo, `- name: my-app-name` 
+   - **memory** para `256M` se estiver utilizando a versão gratuita 
+   - **my-stt-service** para o nome do serviço `Speech to Text` que foi criado no Bluemix
+
 1. Deploy the application
 
     ```
     ibmcloud app push
     ```
 
-1. View the application online at the app URL, for example: https://my-app-name.mybluemix.net
+1. Visualize o aplicativo on-line na URL do aplicativo, por exemplo: https://my-app-name.mybluemix.net
 
 
-## License
+## Licença
 
-  This sample code is licensed under Apache 2.0.
-
-## Contributing
-
-  See [CONTRIBUTING](./CONTRIBUTING.md).
-
+   Este código de amostra está licenciado no Apache 2.0.
+   
 ## Open Source @ IBM
-  Find more open source projects on the [IBM Github Page](http://ibm.github.io/)
+   
+   Encontre mais projetos de código aberto na [Página do IBM Github](http://ibm.github.io/)
 
 
 [service_url]: https://www.ibm.com/watson/services/speech-to-text/
