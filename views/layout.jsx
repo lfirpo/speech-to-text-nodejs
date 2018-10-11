@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { Header, Jumbotron } from 'watson-react-components';
 
 // eslint-disable-mnext-lin =
-const DESCRIPTION = 'The IBM Watson Speech to Text service uses speech recognition capabilities to convert Arabic, English, Spanish, French, Brazilian Portuguese, Japanese, Korean, German, and Mandarin speech into text.';
-const GDPR_INFO = 'This system is for demonstration purposes only and is not intended to process Personal Data. No Personal Data is to be entered into this system as it may not have the necessary controls in place to meet the requirements of the General Data Protection Regulation (EU) 2016/679';
+
+const DESCRIPTION = 'O serviço Speech to Text do IBM Watson usa recursos de reconhecimento de fala para converter fala Árabe, Inglês, Espanhol, Francês, Português do Brasil, Japonês, Coreano, Alemão e Mandarim em texto.';
+const GDPR_INFO = 'Este sistema é apenas para fins de demonstração e não se destina a processar dados pessoais. Nenhum dado pessoal deve ser inserido neste sistema, pois pode não ter os controles necessários para atender aos requisitos do Regulamento Geral de Proteção de Dados da União Européia (UE) 2016/679.';
 
 export default function Layout({ children }) {
   return (
     <html lang="en">
       <head>
         <title>
-          Speech to Text Demo
+          Demonstração de Fala para Texto
         </title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -22,9 +23,9 @@ export default function Layout({ children }) {
       </head>
       <body>
         <Header
-          mainBreadcrumbs="Speech to Text"
+          mainBreadcrumbs="Fala pra Texto"
           mainBreadcrumbsUrl="https://www.ibm.com/watson/services/speech-to-text/"
-          subBreadcrumbs="Speech to Text Demo"
+          subBreadcrumbs="Demonstração de Fala para Texto"
           subBreadcrumbsUrl="https://speech-to-text-demo.ng.bluemix.net"
         />
         <Jumbotron
