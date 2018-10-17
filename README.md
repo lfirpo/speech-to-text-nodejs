@@ -95,7 +95,7 @@ Você pode ver uma [demonstração][demo_url] deste aplicativo.
    - **memory** para `256M` se estiver utilizando a versão gratuita 
    - **my-stt-service** para o nome do serviço `Speech to Text` que foi criado no Bluemix
 
-1. Deploy the application
+1. Faça o deploy da aplicação
 
     ```
     ibmcloud app push
